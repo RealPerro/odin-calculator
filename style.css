@@ -31,15 +31,16 @@
 .pad {
     display: flex;
     gap: 50px;
-    padding:25px;
+    padding:10px;
     flex-direction: row;
     justify-content: space-between;
+    width: 90%;
 }
 
 #display {
     background-color: rgb(70, 70, 70);
     padding:10px;
-    width: 81%;
+    width: 90%;
     text-align: end;
 }
 
@@ -52,6 +53,7 @@
     flex-wrap: wrap-reverse;
     max-width: 180px;
     justify-content: space-around;
+    margin-inline: 30px;
 }
 
 .numberButton {
