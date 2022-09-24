@@ -42,6 +42,7 @@
     padding:10px;
     width: 90%;
     text-align: center;
+    min-height: 49px;
 }
 
 .numbers, .operators {
