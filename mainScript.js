@@ -108,7 +108,7 @@ function clearMemory() {
 function operate (a = currentNumber, c = currentOperator, b = nextNumber) {
     myFunction = functionLink[c];
     let result = myFunction(a, b);
-    return result.toString();
+    return result.toFixed(4);
 }
 
 //input parser
