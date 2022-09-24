@@ -1,0 +1,1 @@
+const mynumber = 0;

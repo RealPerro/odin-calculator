@@ -1,0 +1,14 @@
+* {
+    background-color: black;
+    color:white;
+    font-family: fantasy;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.calculator {
+    height:450px;
+    width: 800px;
+    border: solid 2px white;
+}
