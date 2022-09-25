@@ -108,20 +108,21 @@ function clearMemory() {
 }
 
 function operate (a = currentNumber, c = currentOperator, b = nextNumber) {
-    console.log(`input: a = ${a}, operator = ${c}, b = ${b}, state = ${currentState}`);
+    console.log(`initial input: a = ${a}, operator = ${c}, b = ${b}, state = ${currentState}`);
     currentNumber = (currentNumber != "") ? currentNumber : 0;
     nextNumber = (nextNumber != "") ? nextNumber : 0;
     currentOperator = (currentOperator != "") ? currentOperator : "+";
     myFunction = functionLink[c];
     let result = myFunction(a, b);
-    return result.toFixed(2);
+    console.log(`final a = ${currentNumber}, operator = ${currentOperator}, b = ${nextNumber}, state = ${currentState}`);
+    return result.toString();
 }
 
 //input parser
 function clickParser(e) {
     let currentElement = this;
     let currentInput = this.value
-    console.log(currentInput);
+    console.log(`initial input= ${currentInput}, currentNumber = ${currentNumber}, operator = ${currentOperator}, b = ${nextNumber}, state = ${currentState}`);
     currentElement.classList.add("clicked");
     setTimeout(function() {currentElement.classList.remove("clicked");}, 300);
 
@@ -173,7 +174,7 @@ function clickParser(e) {
             nextNumber = nextNumber + currentInput
         }
     }
-
+    console.log(`input= ${currentInput}, a = ${currentNumber}, operator = ${currentOperator}, b = ${nextNumber}, state = ${currentState}`);
     updateDisplay()
     
 }
