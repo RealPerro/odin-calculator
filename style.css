@@ -73,3 +73,15 @@
     border-color: dodgerblue;
 }
 
+button {
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color:rgb(50,50,50);
+}
+
+.clicked {
+    scale: 1.1;
+}
+

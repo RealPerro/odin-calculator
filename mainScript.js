@@ -33,8 +33,6 @@ allButtons.forEach(function(i) {
 myBody.addEventListener("click", () => {updateDisplay()})
 
 
-
-
 //functions
 
 //update display
@@ -106,15 +104,19 @@ function clearMemory() {
 }
 
 function operate (a = currentNumber, c = currentOperator, b = nextNumber) {
+    console.log(`a = ${a}, operator = ${c}, b = ${b}`);
     myFunction = functionLink[c];
     let result = myFunction(a, b);
-    return result.toFixed(4);
+    return result.toFixed(2);
 }
 
 //input parser
 function clickParser(e) {
-    currentInput = this.value
+    let currentElement = this;
+    let currentInput = this.value
     console.log(currentInput);
+    currentElement.classList.add("clicked");
+    setTimeout(function() {currentElement.classList.remove("clicked");}, 300);
     
     if (currentInput == 'C') {
         clearMemory();
@@ -122,7 +124,6 @@ function clickParser(e) {
     }
 
     if (currentInput == "=") {
-        console.log("igual");
         currentNumber = operate();
         nextNumber = "";
         currentOperator = "";
@@ -139,8 +140,15 @@ function clickParser(e) {
     }
 
     if (operatorsArray.includes(this.value) ){
-        currentOperator = this.value;
-        currentState = "b";
+        if (currentState == "a") {
+            currentOperator = this.value;
+            currentState = "b";}
+        else {
+            currentNumber = operate();
+            nextNumber = "";
+            currentOperator = this.value;
+            currentState = "b";
+        }
     }
 
     if (numbersArray.includes(this.value)) {
