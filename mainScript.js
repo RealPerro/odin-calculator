@@ -27,7 +27,6 @@ const allButtons = document.querySelectorAll("button");
 //add event listener for clicks
 allButtons.forEach(function(i) {
     i.addEventListener('click', clickParser);
-    //i.addEventListener('keyup', keyParser);
 })
 
 myBody.addEventListener("click", () => {updateDisplay()})
@@ -121,6 +120,11 @@ function clickParser(e) {
     console.log(currentInput);
     currentElement.classList.add("clicked");
     setTimeout(function() {currentElement.classList.remove("clicked");}, 300);
+
+    if (currentInput == '.') {
+        if (currentState == "a" && currentNumber.includes(".")) {return null;}
+        if (currentState == "b" && nextNumber.includes(".")) {return null;}
+    }
     
     if (currentInput == 'C') {
         clearMemory();
