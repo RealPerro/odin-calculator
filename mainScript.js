@@ -33,10 +33,14 @@ myBody.addEventListener("click", () => {updateDisplay()})
 
 
 //functions
+function formatNumber(n) {
+    let result = (n == '') ? '' : parseFloat(n).toLocaleString('en-US');
+    return result;
+}
 
 //update display
 function updateDisplay() {
-    valueToDisplay = currentState == "a" ? `${currentNumber} ${currentOperator}`: `${currentNumber} ${currentOperator} ${nextNumber}`;
+    valueToDisplay = currentState == "a" ? `${formatNumber(currentNumber)} ${currentOperator}`: `${formatNumber(currentNumber)} ${currentOperator} ${formatNumber(nextNumber)}`;
     myDisplay.textContent = `${valueToDisplay}`};
 
 //build calculator
