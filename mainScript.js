@@ -100,11 +100,15 @@ function divide(a,b) {
 function clearMemory() {
     currentNumber = "";
     nextNumber = "";
-    currentOperator = "";   
+    currentOperator = "";
+    currentState = "a";   
 }
 
 function operate (a = currentNumber, c = currentOperator, b = nextNumber) {
-    console.log(`a = ${a}, operator = ${c}, b = ${b}`);
+    console.log(`input: a = ${a}, operator = ${c}, b = ${b}, state = ${currentState}`);
+    currentNumber = (currentNumber != "") ? currentNumber : 0;
+    nextNumber = (nextNumber != "") ? nextNumber : 0;
+    currentOperator = (currentOperator != "") ? currentOperator : "+";
     myFunction = functionLink[c];
     let result = myFunction(a, b);
     return result.toFixed(2);
@@ -124,11 +128,14 @@ function clickParser(e) {
     }
 
     if (currentInput == "=") {
-        currentNumber = operate();
-        nextNumber = "";
-        currentOperator = "";
-        currentState = "a";
-        return;
+        if (currentState == "b"){
+            currentNumber = operate();
+            nextNumber = "";
+            currentOperator = "";
+            currentState = "a";
+            return;
+        }
+        else {null}
     }
 
     if (currentInput == "<") {
@@ -139,7 +146,7 @@ function clickParser(e) {
         return;
     }
 
-    if (operatorsArray.includes(this.value) ){
+    if (operatorsArray.includes(this.value) && this.value != "="){
         if (currentState == "a") {
             currentOperator = this.value;
             currentState = "b";}
